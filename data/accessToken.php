@@ -30,9 +30,9 @@
 //		"lang" => "ja",
 //		"locale" => "ja",
 //		"result_type" => "popular",
+//		"until" => "2017-01-17",
         //取得件数
 		"count" => "50",
-//		"until" => "2017-01-17",
 //		"since_id" => "643299864344788992",
 //		"max_id" => "643299864344788992",
 //		"include_entities" => "true",
