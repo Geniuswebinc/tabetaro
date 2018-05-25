@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__) .'/data/require.php';
+require_once dirname(__FILE__) .'/../data/require.php';
 $conn = new DbConn();
 
 // var_dump($date);

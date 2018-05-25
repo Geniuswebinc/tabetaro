@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__) .'/data/require.php';
+require_once dirname(__FILE__) .'/../data/require.php';
 $user_id = $_POST['user_id'];
 $password = $_POST['password'];
 if(!$user_id && !$password){
