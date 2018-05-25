@@ -92,9 +92,6 @@ $favorite_table= $conn->fetch($sql);
                     <div class="form-group">
                         <select class="form-control" name="id">
                             <?php
-                            // foreach($food_lists as $val){
-                            //     echo '<option value="'.$val['id'].'">'.$val['foods_name'].'</option>';
-                            // }
                             foreach($favorite_food_userslist as $val){
                                 echo '<option value="'.$val['id'].'">'.$val['foods_name'].'</option>';
                             }
