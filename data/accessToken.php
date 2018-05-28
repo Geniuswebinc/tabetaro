@@ -18,21 +18,33 @@
 	$request_url = 'https://api.twitter.com/1.1/search/tweets.json' ;		// エンドポイント
 	$request_method = 'GET' ;
 
+	//要素
+	$food ='ラーメン';
+	$data = '15';
+	$range = '30km';
+
+
 	// パラメータA (オプション)
 	$params_a = array(
 
         //検索キーワードを指定↓
 		//"q" => "ミヤチク filter:images",
-        "q" => "スイーツ filter:images exclude:retweets",
-
-        //ツイートを集める場所
+		//検索語句
+		"q" => "$food filter:images exclude:retweets",
+		//ツイートを集める場所
 	  //"geocode" => "35.794507,139.790788,1km",
+
+		//緯度、経度、半径　渋谷半径10ｋmの取得//
+		//"geocode" => "35.661777,139.704051,10km",
+
+		"geocode" => "31.912203599999994,131.4244072,10km",
 //		"lang" => "ja",
 //		"locale" => "ja",
 //		"result_type" => "popular",
+		//"geocode" =>"near:東京 within:1000",//ボツ
+		//取得件数
+		"count" => "$date",
 //		"until" => "2017-01-17",
-        //取得件数
-		"count" => "50",
 //		"since_id" => "643299864344788992",
 //		"max_id" => "643299864344788992",
 //		"include_entities" => "true",
@@ -128,14 +140,12 @@ curl_close( $curl ) ;
 $json = substr( $res1, $res2['header_size'] ) ;		// 取得したデータ(JSONなど)
 $header = substr( $res1, 0, $res2['header_size'] ) ;	// レスポンスヘッダー (検証に利用したい場合にどうぞ)
 
-// [cURL]ではなく、[file_get_contents()]を使うには下記の通りです…
-// $json = file_get_contents( $request_url , false , stream_context_create( $context ) ) ;
-
 // JSONをオブジェクトに変換
 $obj = json_decode( $json ) ;
 
 
 //var_dump($obj);
+
 //------------------------------------------------------------------------------
 //twitterから取得したデータを整形↓　
 foreach($obj->statuses as $key => $val){
@@ -143,7 +153,14 @@ foreach($obj->statuses as $key => $val){
     $data_str = date('Y年m月d日 h:i:s', strtotime($val->created_at));
     //本文取得,p　JSON形式をテキスト形式に変換
     echo "<p>{$key} : {$val->text}<br>{$data_str}<br></p>";
+	$tweetCheck = $val->text;
+	//var_dump($tweet);
+	//文字列置換　↓　https以降を空白に置換する。
 
+	// $tweet = preg_replace("/https.+$/","",$tweetCheck);
+
+	$tweet[] = $val;
+//	echo $tweet;
 
     // //取得した画像コードアドレスを実体化させる 配列の何番目を直接叩くパターン　成功
     // $media_url = $val->entities->media[0]->media_url;
