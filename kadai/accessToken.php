@@ -155,9 +155,9 @@ $obj = json_decode( $json ) ;
 foreach($obj->statuses as $key => $val){
     //投稿時間を変換
     $data_str = date('Y年m月d日 h:i:s', strtotime($val->created_at));
+
     //本文取得,p　JSON形式をテキスト形式に変換
     echo "<p>{$key} : {$val->text}<br>{$data_str}<br></p>";
-
 
     // //取得した画像コードアドレスを実体化させる 配列の何番目を直接叩くパターン　成功
     // $media_url = $val->entities->media[0]->media_url;
