@@ -30,7 +30,6 @@ if(preg_match("/^[a-zA-Z0-9]+$/", $user_id)){
     }
 }
 
-var_dump($sql);
 foreach($userslist as $val){
     if($user_id == $val[user_id]){
         $login = 2;
@@ -41,9 +40,6 @@ if($login == 1){
     $conn->fetch($sql);
 }
 //値の入った配列や変数の中身を表示
-// var_dump($favorite_table);
-
-// var_dump($date);
 ?>
 <!DOCTYPE html>
 <html>
@@ -72,13 +68,25 @@ if($login == 1){
                         echo '</form>';
                     }elseif($login == 2){
                         echo '<h3>同じIDのユーザがいます。他のIDで登録してください。</h3>';
+                        echo '<form action="insert.php" method="post">';
                         echo '<input type="submit" value="登録ページに戻る" onclick="history.back()" class="form-control" >';
+                        echo '    <input type="hidden" name="user_id" value="'.$user_id.'">';
+                        echo '    <input type="hidden" name="password" value="'.$password.'">';
+                        echo '</form>';
                     }elseif($login == 3){
                         echo '<h3>IDとパスワードの文字数は6〜8文字にしてください。</h3>';
+                        echo '<form action="insert.php" method="post">';
                         echo '<input type="submit" value="登録ページに戻る" onclick="history.back()" class="form-control" >';
+                        echo '    <input type="hidden" name="user_id" value="'.$user_id.'">';
+                        echo '    <input type="hidden" name="password" value="'.$password.'">';
+                        echo '</form>';
                     }elseif($login == 4){
                         echo '<h3>IDとパスワードは、半角英数字で入力してください。</h3>';
+                        echo '<form action="insert.php" method="post">';
                         echo '<input type="submit" value="登録ページに戻る" onclick="history.back()" class="form-control" >';
+                        echo '    <input type="hidden" name="user_id" value="'.$user_id.'">';
+                        echo '    <input type="hidden" name="password" value="'.$password.'">';
+                        echo '</form>';
                     }
                     ?>
                 </div>

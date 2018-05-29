@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__) .'/data/require.php';
+require_once dirname(__FILE__) .'/../data/require.php';
 $user_id = $_POST['user_id'];
 $password = $_POST['password'];
 $delete = $_POST['delete'];
@@ -27,8 +27,6 @@ $sql .= '   ON food_lists.id = favorite.foods_id';
 $sql .= '   LEFT OUTER JOIN userslist';
 $sql .= '   ON userslist.userslist_id = favorite.whose_id';
 $favorite_food_userslist= $conn->fetch($sql);
-var_dump($sql);
-
 
 foreach($favorite_food_userslist as $val){
     if($id == $val[id]){
@@ -74,12 +72,12 @@ $favorite_table= $conn->fetch($sql);
     <div class="container">
         <div class="row">
             <div class="col-xs-3">
-                <img src="./img/maru.png" width="50" height="50" alt="食べたろ">
+                <img src="./img/maru.png" width="50" height="50" alt="食べたろ" class="title">
             </div>
             <div class="col-xs-9">
                 <div class="text-right">
                     <form action="top.php" method="post">
-                        <input type="image" src="./img/pagetop.png" alt="トップに戻る"class="pagetop">
+                        <input type="image" src="./img/pagetop.png" alt="トップに戻る" class="pagetop">
                         <input type="hidden" name="user_id" value="<?php echo $user_id;?>">
                         <input type="hidden" name="password" value="<?php echo $password;?>">
                     </form>
@@ -90,7 +88,7 @@ $favorite_table= $conn->fetch($sql);
             <div class="row">
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <select class="form-control" name="id">
+                        <select class="form-control input-lg" name="id">
                             <?php
                             foreach($favorite_food_userslist as $val){
                                 echo '<option value="'.$val['id'].'">'.$val['foods_name'].'</option>';
@@ -103,7 +101,7 @@ $favorite_table= $conn->fetch($sql);
             <div class="row">
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <input type="submit" value="お気に入りに登録" class="form-control">
+                        <input type="submit" value="お気に入りに登録" class="form-control input-lg">
                         <input type="hidden" name="user_id" value="<?php echo $user_id;?>">
                         <input type="hidden" name="password" value="<?php echo $password;?>">
                     </div>
@@ -113,7 +111,7 @@ $favorite_table= $conn->fetch($sql);
         <div class="row">
             <div class="col-xs-12">
                 <div class="text-center">
-                    <p class="okiniiri">＃お気に入り</p>
+                    <p class="favorite_title">＃お気に入り一覧</p>
                 </div>
             </div>
         </div>
@@ -125,11 +123,11 @@ $favorite_table= $conn->fetch($sql);
                         <?php
                         foreach($favorite_table as $val){
                             echo '<tr>';
-                            echo '    <td>'.$val['favorite_words'].'</td>';
+                            echo '    <td><p class="favorite_create_list">'.$val['favorite_words'].'</p></td>';
                             echo '    <td>';
                             ?>
                             <form action="favorite_create.php" method="post">
-                                <input type="submit" value="削除">
+                                <input type="submit" value="削除" class="form-control input-lg">
                                 <input type="hidden" name="delete" value="1">
                                 <input type="hidden" name="favorite_id" value="<?php echo $val['favorite_id']; ?>" class="btn btn-default">
                                 <input type="hidden" name="user_id" value="<?php echo $user_id;?>">

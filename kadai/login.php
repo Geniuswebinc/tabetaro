@@ -44,13 +44,15 @@ foreach($userslist as $val){
                     if($login){
                         echo '<h3>ログインが完了しました。</h3>';
                         echo '<form action="top.php" method="post">';
-                        echo '    <input type="submit" value="食べたろTOPページへ" class="form-control" >';
+                        echo '    <input type="submit" value="食べたろTOPページへ" class="form-control input-lg" >';
                         echo '    <input type="hidden" name="user_id" value="'.$user_id.'">';
                         echo '    <input type="hidden" name="password" value="'.$password.'">';
                         echo '</form>';
                     }elseif(!$login){
                         echo '<h3>ログイン出来ませんでした。もう一度入力してください。</h3>';
-                        echo '<input type="submit" value="ログインページに戻る" onclick="history.back()" class="form-control" >';
+                        echo '<input type="submit" value="ログインページに戻る" onclick="history.back()" class="form-control input-lg" >';
+                        echo '    <input type="hidden" name="user_id" value="'.$user_id.'">';
+                        echo '    <input type="hidden" name="password" value="'.$password.'">';
                     }
                     ?>
                 </div>
