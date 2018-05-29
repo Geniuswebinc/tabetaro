@@ -21,25 +21,33 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <input type="text" name="user_id" placeholder="IDを入力" class="form-control">
+                        <input type="text" name="user_id" placeholder="IDを入力" class="form-control input-lg">
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <input type="password" name="password" placeholder="パスワードを入力" class="form-control">
+                        <input type="password" name="password" placeholder="パスワードを入力" class="form-control input-lg">
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <input type="submit" value="ユーザ登録" class="form-control">
+                        <input type="submit" value="ユーザ登録" class="form-control input-lg">
                     </div>
                 </div>
             </div>
-
+        </form>
+        <form action="index.php" method="post">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <input type="submit" value="ログインページへ" class="form-control input-lg">
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
